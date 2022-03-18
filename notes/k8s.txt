@@ -1,0 +1,81 @@
+10. CREATE DOCKER
+
+ -Rght click on the project -> create docker support
+
+
+11 RIN DOCKER CONTAINER
+
+  --
+
+12 DOCKER COMMANDS LINE
+
+
+ odcker images
+ docker rmi dc 
+
+ docker ps -> dockers running
+
+ docker ps -a
+
+
+ docker build -t shoppingapp .   -> . meands 
+
+ docker run -d -p 8080:80 --name myapp shoppingclient
+
+13 DOCKER REGISTRY
+
+  create: https://hub.docker.com/repository/create?namespace=fgaletti
+
+      -> shoppingapp
+
+   docker push fgaletti/shoppingapp:tagname
+
+docker push fgaletti/shoppingapp:latest
+  
+  docker login -> need to login to dockerHub
+
+ docker tag 7dd  fgaletti/shoppingapp  --> copy of
+
+ 15 automate builds
+
+	automate builds
+
+     - go to docker 
+
+16 DEPLOY TO AZURE
+
+ LOCAL MACHINE ->  AZURE PIPELINE ->   AZ CONTAINER REGISTRY ->  WEB APP FOR CONTAINERS
+
+17 START WITH AZURE SUBSCRIPTION  
+
+
+18
+
+shoppingappk8 -> web app
+
+
+20. CI/CD FOR SINGLE CONTAINER
+
+ webhook - dockerhub -_ continuous deployment
+
+
+26 SET LAUNCH SETTING AND PORT NUMBERS DEFINED FOR SHOPPING
+
+*** Client Application -> change PROFILE FROM (DOCKER) -> Shopping.Client
+
+   --> SERT UP; http://localhost:5001
+
+   ** GO TO SOLUTION -> MULTIPLE STARTUP
+      -> set 2 applicatrions 
+  
+
+28  CONSUME SHOPPING.API FROM Shooping.client MICROSERVICE
+   _httpClient = httpClientFactory.CreateClient("ShoppingApiClient");
+
+  Shooping.client -> calls -> SHOPPING.API 
+
+29 SET UP MONGO DOCKER
+
+
+ MONGODB docker
+
