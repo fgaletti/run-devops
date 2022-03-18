@@ -79,3 +79,44 @@ shoppingappk8 -> web app
 
  MONGODB docker
 
+ docker pull mongo
+
+https://hub.docker.com/_mongo
+
+ docker run -d -p 27107:27107 --name shopping-mongo mongo
+
+ docker logs -f shopping-mongo
+
+ docker exec -it shopping-mongo /bin/bash  ???
+
+30 INTERACTIVE TERMINAL FOR MONGODB
+
+  -- OPEN POWERSHELL IN VISUAL STUIDO
+
+
+31 COMMAND
+
+docker exec -it shopping-mongo /bin/bash
+
+mongo
+   -> show dbs
+
+ use CatalogDb
+switched to db CatalogDb
+> db.createCollection('Products')
+
+
+db.Products.insertMany([{'Name': 'Asus Laptop', 'Category':'Computers', 'Summary': 'Summary', 'Description': 'Description', 'Imagefile': 'Imagefile', 'Price': '54.00'},
+{'Name': 'HP Laptop', 'Category':'Computers', 'Summary': 'Summary', 'Description': 'Description', 'Imagefile': 'Imagefile', 'Price': '88.00'} ] )
+
+
+db.Products.find({}).pretty()
+
+show databases
+
+
+31 CONNECT MONGO DOCHJER CONTAINER FROM SHOPING.API MICROSERVICE
+
+
+
+
