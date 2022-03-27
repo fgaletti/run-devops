@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 using Shooping.API.Model;
 using Shopping.Client.Data;
 using System;
@@ -15,16 +16,18 @@ namespace Shooping.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ILogger<ProductController> _logger;
+        private readonly ProductContext _context;
 
-        public ProductController(ILogger<ProductController> logger)
+        public ProductController(ILogger<ProductController> logger, ProductContext context)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public async Task< IEnumerable<Product>> Get()
         {
-            return ProductContext.Products;
+            return await _context.Products.Find(prop => true).ToListAsync();
             //var rng = new Random();
 
             //return Enumerable.Range(1, 5).Select(index =>

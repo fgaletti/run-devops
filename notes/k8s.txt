@@ -83,7 +83,7 @@ shoppingappk8 -> web app
 
 https://hub.docker.com/_mongo
 
- docker run -d -p 27107:27107 --name shopping-mongo mongo
+ docker run -d -p 27017:27017 --name shopping-mongo mongo
 
  docker logs -f shopping-mongo
 
@@ -117,6 +117,118 @@ show databases
 
 31 CONNECT MONGO DOCHJER CONTAINER FROM SHOPING.API MICROSERVICE
 
+   modify product class
 
+32 ONNECT MONGO DOCHJER CONTAINER FROM SHOPING.API MICROSERVICE 2
+
+ modify CONTEXT  -> ProductContext
+
+  2. add service -> dependency Injection
+  3. add to ProductController -> datacontext 
+
+
+mongodb://127.0.0.1:27107
+  
+
+35 ADDING DOCKER-COMPOSE FILE FOR SHOPPING MICXROSERVICES
+
+  -> Right click on the project -> Container Orchestration Support -> docker compose -> linux
+
+  docker-compose: defines all the services to be deployed un the moment , and rely on a docker file or existing container.
+
+
+  - Add the other project to Docker Orachestration
+
+
+
+
+36 ADDING MONGODB into DOCKER-COMPOSE FILE
+
+    shopping.db:
+    container_name: shoppingdb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${WEBAPP_STORAGE_HOME}/site:/data/db  
+
+37 RUN MULTI-CONTAINER APPLICATION WITH DOCKER COMPOSE
+
+  --1. STEP : SET DOCKER COMPOSE AS STARTUP PROJECT
+
+ run docker compose
+
+ container: dev = debug mode
+
+38 EXCEPTIONS FIXES ON RUNNING DOCKER COMPOSE
+
+  Override applications settings -> in docker compose
+
+     Error DATABASE NAME 
+ 
+ 2.Error in PORT (Client)
+   -is looking for PORT 5000 , now it should be 
+
+ shopping.client:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ShoopingAPIUrl=http://shoppingapi"  -> container name
+
+
+    ** recreate images because we changed the code
+
+   *richt click on docker compose
+	-> powershell
+	   -> remove all containers: 
+		docker ps -aq
+		docker stop $(docker ps -aq)
+
+         --- delete images
+
+               docker rm $(docker ps -aq)
+
+               docker rmi $(docker images -q)
+
+          docker system prune   : remove all stopped containers
+					 all networks not used
+  
+          docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d  --> run all containers in background
+
+       docker-compose -f docker-compose.yml -f docker-compose.override.yml up -down -> stop all containers
+
+
+
+39 COMMANDS
+
+  examples:
+  docker run -d --name=my-mongo -p 5672:5672 mongo 
+
+ docker pull mongo
+  docker build 
+   docker run  
+
+  docker-compose up
+   docker-compose -f docker-compose.yaml -f 
+
+-------------------------------------------------------
+40 KUBERNETES
+
+44 LOCAL INSTALLMENT
+
+  GO TO DOCKER 
+      -> settings -> check install kubernetes
+
+  kubectl get all
+
+
+45 KUBER COMMANDS
+
+  kubectl  get nodes / pod / service / all
+
+ kubectl  create / edit / delete
+
+ http:
+ 
+ 
 
 

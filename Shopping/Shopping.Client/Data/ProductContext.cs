@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shopping.Client.Data
 {
-    public static class ProductContext
+    public  class ProductContext
     {
         public static readonly List<Product> Products = new List<Product>
         {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shopping.Client.Data;
 
 namespace Shopping.Client
 {
@@ -27,6 +28,8 @@ namespace Shopping.Client
                 client.BaseAddress = new Uri("http://localhost:5000/");
             });
             services.AddControllersWithViews();
+
+         
 
         }
 
